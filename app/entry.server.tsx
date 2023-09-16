@@ -8,6 +8,7 @@ import type { AppLoadContext, EntryContext } from "@remix-run/cloudflare";
 import { RemixServer } from "@remix-run/react";
 import isbot from "isbot";
 import { renderToReadableStream } from "react-dom/server";
+import { createShopify } from "~/shopify.server";
 
 export default async function handleRequest(
   request: Request,
@@ -16,6 +17,9 @@ export default async function handleRequest(
   remixContext: EntryContext,
   loadContext: AppLoadContext
 ) {
+  const shopify = createShopify(loadContext);
+  shopify.addDocumentResponseHeaders(request, responseHeaders);
+
   const body = await renderToReadableStream(
     <RemixServer context={remixContext} url={request.url} />,
     {
