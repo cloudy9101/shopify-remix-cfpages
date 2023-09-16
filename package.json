@@ -14,8 +14,8 @@
     "@remix-run/cloudflare-pages": "*",
     "@remix-run/css-bundle": "*",
     "@remix-run/react": "*",
-    "@shopify/shopify-app-remix": "*",
-    "@shopify/shopify-app-session-storage-kv": "*",
+    "@shopify/shopify-app-remix": "^1.2.1",
+    "@shopify/shopify-app-session-storage-kv": "^1.0.13",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
