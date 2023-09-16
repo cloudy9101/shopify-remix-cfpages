@@ -2,12 +2,16 @@ import {
   type LoaderFunctionArgs,
   json,
   type HeadersArgs,
+  type LinksFunction,
 } from "@remix-run/cloudflare";
 import { Outlet, useLoaderData, useRouteError } from "@remix-run/react";
 import { AppProvider } from "@shopify/shopify-app-remix/react";
 import { boundary } from "@shopify/shopify-app-remix";
+import styles from "@shopify/polaris/build/esm/styles.css";
 
 import { createShopify } from "~/shopify.server";
+
+export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export const loader = async ({ request, context }: LoaderFunctionArgs) => {
   await createShopify(context).authenticate.admin(request);
